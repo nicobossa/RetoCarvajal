@@ -6,6 +6,7 @@
 package pruebacarvajal;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,15 +20,17 @@ public class PruebaCarvajal {
     public static void main(String[] args) {
         // TODO code application logic here
         logic ejercicio = new logic();
+        int e = 1;
         ArrayList<range> rangos = new ArrayList<range>();
-        rangos.add(new range(2, 3));
-        rangos.add(new range(1, 4));
         
-        ArrayList<range> nuevosranges = ejercicio.obtenerNuevosranges(rangos);
-        for (range rango : nuevosranges) {
-            System.out.println(rango.toString());
+        while (e != 0) {
+            int start = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el valor inicial de la linea."));
+            int end = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el valor inicial de la linea."));
+            rangos.add(new range(start, end));
+            e = Integer.parseInt(JOptionPane.showInputDialog("Desea conocer los nuevos rangos? Responda con 0 para SI"));
         }
+
+        ArrayList<range> nuevosranges = ejercicio.nuevosRangos(rangos);
+        rangos.forEach(item -> System.out.println(item));
     }
 }
-
-
